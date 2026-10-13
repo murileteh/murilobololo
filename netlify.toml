@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "22"
+  NITRO_PRESET = "netlify"
+
+# TanStack Start / Nitro must deploy server functions along with static assets.
+# Deploy this repository through Netlify's Git-based build, not drag-and-drop.

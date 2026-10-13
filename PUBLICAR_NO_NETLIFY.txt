@@ -1,0 +1,22 @@
+DPM BRASILANDIA — PUBLICACAO NO NETLIFY
+
+IMPORTANTE: Este projeto usa TanStack Start (SSR). NAO envie este ZIP diretamente na area de arrastar e soltar do Netlify. O Netlify precisa executar o build e publicar funcoes de servidor.
+
+1. Extraia o ZIP e envie o conteudo da pasta do projeto para um repositorio PRIVADO no GitHub.
+2. No Netlify: Add new project > Import an existing project > GitHub > selecione o repositorio.
+3. As configuracoes de build estao em netlify.toml: comando npm run build, diretorio .output/public, NODE_VERSION=22 e NITRO_PRESET=netlify.
+4. Em Site configuration > Environment variables, configure:
+   SUPABASE_URL
+   SUPABASE_PUBLISHABLE_KEY
+   VITE_SUPABASE_URL
+   VITE_SUPABASE_PUBLISHABLE_KEY
+   SUPABASE_SERVICE_ROLE_KEY (somente no ambiente de servidor; nunca prefixe com VITE_)
+   LOVABLE_CRON_SECRET (se as rotinas protegidas forem utilizadas)
+   Use os valores do seu projeto Supabase. Nunca exponha a service role key em codigo publico.
+5. Clique em Deploy site. Se falhar, copie o log de build para diagnostico.
+6. No Supabase Auth > URL Configuration, ajuste Site URL e Redirect URLs para o dominio Netlify.
+
+OBSERVACOES:
+- O build nao foi validado neste ambiente; pode ser necessario ajustar o preset Nitro conforme o erro apresentado.
+- O arquivo .env original foi retirado deste ZIP para evitar enviar configuracoes locais ao repositorio.
+- O banco de dados e as politicas RLS continuam hospedados no Supabase; o Netlify nao substitui o banco.
